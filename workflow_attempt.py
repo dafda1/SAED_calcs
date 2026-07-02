@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import spot_ID
-import calibration_mod as cal
+import Calibration as cal
 
 import MyPyRSP.CellCalcs as cc
 
