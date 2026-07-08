@@ -7,6 +7,8 @@ Created on Fri May 29 11:01:41 2026
 
 import numpy as np
 
+from AuxFuncs import sanitise_matrix
+
 degrees = 180/np.pi
 
 def metric_dotprod (vec1, vec2, metric):
@@ -33,7 +35,8 @@ def index_crossprod (i, j):
         return 3 - (i + j)
 
 def generate_metric_tensor (apar, bpar = None, cpar = None,
-                            alpha = 90, beta = 90, gamma = 90):
+                            alpha = 90, beta = 90, gamma = 90,
+                            sanitise_output = True):
     
     if bpar is None:
         bpar = apar
@@ -57,6 +60,9 @@ def generate_metric_tensor (apar, bpar = None, cpar = None,
                            
             metric[i, j] = val
             metric[j, i] = val
+            
+    if sanitise_output:
+        metric = sanitise_matrix(metric)
     
     return metric
 
