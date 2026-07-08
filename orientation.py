@@ -120,10 +120,13 @@ def generate_ZOLZ_reflections_from_zone_axis (zone_axis, miller_lim = 10,
     reflections = shuffle_reflections(reflections, shuffle)
     
     if Qmax_given:
-        Qvals = np.matmul(reflections,
-                          np.matmul(metric_reciprocal, reflections.T))
+        new_reflections = []
+        for hkl in reflections:
+            Qval = cc.metric_norm(hkl, metric_reciprocal)
+            if Qval < Qmax:
+                new_reflections.append(hkl)
         
-        reflections = reflections[Qvals < Qmax]
+        reflections = np.array(new_reflections)
         
     return reflections
                 
