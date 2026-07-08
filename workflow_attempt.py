@@ -10,8 +10,7 @@ import matplotlib.pyplot as plt
 
 import spot_ID
 import Calibration as cal
-
-import MyPyRSP.CellCalcs as cc
+import CellCalcs as cc
 
 from AuxFuncs import translate_reflections
 

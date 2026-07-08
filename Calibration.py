@@ -8,7 +8,7 @@ Created on Fri Jun 26 11:55:01 2026
 import numpy as np
 import matplotlib.pyplot as plt
 
-import MyPyRSP.CellCalcs as cc
+import CellCalcs as cc
 
 from AuxFuncs import draw_circle
 from orientation import orient_from_zone_axis

@@ -6,7 +6,7 @@ Created on Fri Jun 26 11:14:49 2026
 """
 
 import numpy as np
-import MyPyRSP.CellCalcs as cc
+import CellCalcs as cc
 
 from AuxFuncs import sanitise_matrix
 
