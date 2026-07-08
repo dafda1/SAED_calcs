@@ -88,3 +88,7 @@ def metric_angle (vec1, vec2, metric, unit_degrees = True):
     mult = (1, degrees)[int(unit_degrees)]
     
     return np.arccos(dotprod/dotprod_norm)*mult
+
+def metric_distance (vec1, vec2, metric):
+    diff = vec1 - vec2
+    return metric_norm(diff, metric)
