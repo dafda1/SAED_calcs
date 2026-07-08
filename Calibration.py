@@ -8,9 +8,6 @@ Created on Fri Jun 26 11:55:01 2026
 import numpy as np
 import matplotlib.pyplot as plt
 
-import sys
-sys.path.insert(0, r"C:\Users\dafda1\MyPackages")
-
 import MyPyRSP.CellCalcs as cc
 
 from AuxFuncs import draw_circle
