@@ -49,7 +49,7 @@ def translate_reflections (hkl_array, space = "reciprocal"):
 def sanitise_matrix (matrix, tolerance = 1e-10):
     return np.where(np.abs(matrix) > tolerance, matrix, 0)
 
-def invert_matrix (square_matrix):
+def invert_matrix (square_matrix, sanitise_output = True):
     shape = square_matrix.shape
     if (len(shape) != 2) or (shape[0] != shape[1]):
         raise ValueError(f"Array not a square matrix, shape is f{shape}")
@@ -77,5 +77,10 @@ def invert_matrix (square_matrix):
         
         else:
             return np.linalg.inv(square_matrix)
+        
+        output = adjugate/Vol
+        
+        if sanitise_output:
+            output = sanitise_matrix(output)
             
-        return adjugate/Vol
+        return output
