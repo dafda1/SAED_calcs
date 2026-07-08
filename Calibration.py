@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 import CellCalcs as cc
 
-from AuxFuncs import draw_circle
+from AuxFuncs import draw_circle, invert_matrix
 from orientation import orient_from_zone_axis
 
 #%% auxilliary functions
