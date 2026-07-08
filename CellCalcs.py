@@ -80,3 +80,11 @@ def standard_root_cell (metric_tensor):
 
 def compute_pi_matrix (cell_matrix):
     return 2*np.pi*invert_matrix(cell_matrix.T)
+
+def metric_angle (vec1, vec2, metric, unit_degrees = True):
+    dotprod_norm = metric_norm(vec1, metric)*metric_norm(vec2, metric)
+    dotprod = metric_dotprod(vec1, vec2, metric)
+    
+    mult = (1, degrees)[int(unit_degrees)]
+    
+    return np.arccos(dotprod/dotprod_norm)*mult
