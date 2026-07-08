@@ -46,6 +46,9 @@ def translate_reflections (hkl_array, space = "reciprocal"):
     
     return text
 
+def sanitise_matrix (matrix, tolerance = 1e-10):
+    return np.where(np.abs(matrix) > tolerance, matrix, 0)
+
 def invert_matrix (square_matrix):
     shape = square_matrix.shape
     if (len(shape) != 2) or (shape[0] != shape[1]):

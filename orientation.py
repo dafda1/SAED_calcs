@@ -8,8 +8,7 @@ Created on Fri Jun 26 11:14:49 2026
 import numpy as np
 import MyPyRSP.CellCalcs as cc
 
-def sanitise_matrix (matrix, tolerance = 1e-10):
-    return np.where(np.abs(matrix) > tolerance, matrix, 0)
+from AuxFuncs import sanitise_matrix
 
 def orient_from_zone_axis (metric_tensor, zone_axis,
                            sanitise_output = True):
