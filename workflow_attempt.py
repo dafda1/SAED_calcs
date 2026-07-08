@@ -12,7 +12,7 @@ import spot_ID
 import Calibration as cal
 import CellCalcs as cc
 
-from AuxFuncs import translate_reflections
+from AuxFuncs import translate_reflections, invert_matrix
 
 from os.path import join
 
@@ -33,7 +33,7 @@ metric = cc.generate_metric_tensor(apar = 9.642,
                                    cpar = 8.104,
                                    gamma = 120)
 
-metric_recip = (4*np.pi**2)*np.linalg.inv(metric)
+metric_recip = (4*np.pi**2)*invert_matrix(metric)
 
 #%% for a frame, identify spots to be used for calibration
 

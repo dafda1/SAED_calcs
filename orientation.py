@@ -8,7 +8,7 @@ Created on Fri Jun 26 11:14:49 2026
 import numpy as np
 import CellCalcs as cc
 
-from AuxFuncs import sanitise_matrix
+from AuxFuncs import sanitise_matrix, invert_matrix
 
 def orient_from_zone_axis (metric_tensor, zone_axis,
                            sanitise_output = True):
@@ -38,7 +38,7 @@ def orient_from_zone_axis (metric_tensor, zone_axis,
 
     Qmat_D = np.diag(np.array((Qvec_x_norm, Qvec_y_norm, Qvec_z_norm)))
 
-    orientation = np.matmul(Qmat_D, np.linalg.inv(Qmat))
+    orientation = np.matmul(Qmat_D, invert_matrix(Qmat))
 
     pimat_new = np.matmul(pimat, orientation.T)
     cell_new = np.matmul(cell, orientation.T)

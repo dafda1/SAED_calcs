@@ -7,7 +7,7 @@ Created on Fri May 29 11:01:41 2026
 
 import numpy as np
 
-from AuxFuncs import sanitise_matrix
+from AuxFuncs import sanitise_matrix, invert_matrix
 
 degrees = 180/np.pi
 
@@ -79,4 +79,4 @@ def standard_root_cell (metric_tensor):
     return np.matmul(evecs, np.matmul(eval_matrix, evecs.T))
 
 def compute_pi_matrix (cell_matrix):
-    return 2*np.pi*np.linalg.inv(cell_matrix.T)
+    return 2*np.pi*invert_matrix(cell_matrix.T)

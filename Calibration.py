@@ -23,7 +23,7 @@ def check_input_for_radius (Q_radius, metric_tensor, hkl):
             raise ValueError("If Q_radius not given, must provide "+\
                              "metric tensor and example Miller indices")
         
-        metric_recip = (4*np.pi**2)*np.linalg.inv(metric_tensor)
+        metric_recip = (4*np.pi**2)*invert_matrix(metric_tensor)
         Q_radius = cc.metric_norm(vector = hkl, metric = metric_recip)
         
         return_Qrad = True
