@@ -145,7 +145,8 @@ def map_Qspace_to_pixels (Qx, Qy, origin, difC):
 
 def rotate_from_spot (spots, spotID, zone_axis,
                       metric_tensor, hkl,
-                      origin, difC):
+                      origin, difC,
+                      check_determinant = True):
     
     cell, pimat = orient_from_zone_axis(metric_tensor, zone_axis)
     
@@ -162,9 +163,10 @@ def rotate_from_spot (spots, spotID, zone_axis,
 
     cos, sin = tuple(np.matmul(Qmat_pre, Qvec_pos))
     
-    Rot_det = cos**2 + sin**2
-    if np.abs(Rot_det - 1) > 1e-10:
-        raise ValueError(f"Rotation determinant is {Rot_det}, should be 1.")
+    if check_determinant:
+        Rot_det = cos**2 + sin**2
+        if np.abs(Rot_det - 1) > 1e-10:
+            raise ValueError(f"Rotation determinant is {Rot_det}, should be 1.")
 
     Rot_correction = np.array([[cos, -sin, 0],
                                [sin,  cos, 0],
