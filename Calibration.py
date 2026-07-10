@@ -176,3 +176,15 @@ def rotate_from_spot (spots, spotID, zone_axis,
     cell_new = np.matmul(cell, Rot_correction.T)
     
     return cell_new, pimat_new
+
+def calc_angle_from_spots (spots, spotID1, spotID2, spotID3,
+                           unit_degrees = True):
+    
+    disp1 = spots[spotID1, :2] - spots[spotID2, :2]
+    disp2 = spots[spotID3, :2] - spots[spotID2, :2]
+    
+    norm = 1.0/np.sqrt(np.sum(disp1**2)*np.sum(disp2**2))
+    
+    mult = (1, cc.degrees)[int(unit_degrees)]
+    
+    return np.arccos(np.dot(disp1, disp2)*norm)*mult
