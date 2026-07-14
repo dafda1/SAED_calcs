@@ -33,8 +33,8 @@ def translate_reflections (hkl_array, space = "reciprocal"):
         text = r"$("
         end_text = r")$"
     elif space == "direct":
-        text = r"$("
-        end_text = r")$"
+        text = r"$["
+        end_text = r"]$"
     else:
         raise ValueError(f"Input '{space}' unrecognised. "+\
                          "'space' must be either 'reciprocal' or 'direct'.")
